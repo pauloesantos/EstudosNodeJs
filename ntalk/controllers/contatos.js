@@ -8,7 +8,7 @@ module.exports = function(app) {
 			res.render('contatos/index', params);
 		},
 		create: function(req, res) {
-			var contato req.body.contato
+			var contato = req.body.contato
 				, usuario = req.session.usuario;
 			usuario.contatos.push(contato);
 			res.redirect('/contatos');
