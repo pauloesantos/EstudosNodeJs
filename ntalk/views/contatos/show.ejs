@@ -1,0 +1,17 @@
+<% include ../header %>
+<header>
+	<h2>Ntlak - Editar contato</h2>
+</header>
+<section>
+	<form action="/contato/<%- id %>" method="post">
+		<input type="hidden" name="_method" value="delete">
+		<p><label>Nome:</label>
+			<input type="text" name="contato[nome]" value="<%- contato.nome %>"></p>
+		<p><label>Email:</label>
+			<input type="text" name="contato[email]" value="<%- contato.email %>"></p>
+		<p><button type="submit">Excluir</button>
+			<a href="" herf="/contato/<%- id %>/">Editar</a></p>
+	</form>
+</section>
+<% include ../exit %>
+<% include ../footer %>
