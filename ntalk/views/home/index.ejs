@@ -1,15 +1,15 @@
 <% include ../header %>
-		<header>
+<header class="row-fluid text-center">
 			<h1>Ntalk</h1>
 			<h4>Bem Vindo!</h4>
 		</header>
-		<section>
+<section class="row-fluid text-center">
 			<form action="/entrar" method="post">
 				<input type="text" name="usuario[nome]" placeholder="Digite o Nome">
 				<br>
 				<input type="text" name="usuario[email]" placeholder="Digite o Email">
 				<br>
-				<button type="submit">Entrar</button>
+    <button type="submit" class="btn btn-success">Entrar</button>
 			</form>
 		</section>
 <% include ../footer %>

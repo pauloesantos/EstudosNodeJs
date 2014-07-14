@@ -1,6 +1,7 @@
 var express = require('express')
   , app = express()
   , load = require('express-load')
+  , error = require('./middleware/error');
 
 
 
@@ -12,11 +13,13 @@ app.use(express.cookieParser('ntalk'));
 app.use(express.session());
 app.use(express.bodyParser());
 
-app.use(express.methodOverride());
 app.use(app.router);
 
 
 app.use(express.static(__dirname + '/public'));
+
+app.use(error.notFound);
+app.use(error.serverError);
 
 //app.use('/', routes.index);
 //app.use('/usuarios', routes.users.index);
