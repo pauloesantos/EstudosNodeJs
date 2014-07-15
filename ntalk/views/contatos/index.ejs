@@ -2,8 +2,9 @@
 <header class="row-fluid text-center">
 		<h2>Ntalk - Agenda de Contatos</h2>
 	</header>
+<section class="row-fluid">
 	<section>
-		<table>
+		<table class="table well">
 			<thead>
 				<tr>
 					<th>Nome</th>
@@ -12,11 +13,14 @@
 				</tr>
 			</thead>
 			<tbody>
-				<% contatos.forEach(function(contato, index) {%>
+				<% contatos.forEach(function(contato, index) { %>
 				<tr>
 					<td><%- contato.nome %></td>
 					<td><%- contato.email %></td>
-					<td><a href="/contato/<%- index %>">Detalhes</a></td>
+					<td>
+						<a href="/contato/<%- index %>">Detalhes</a>
+						<a href="/chat/<%- contato.email %>">Conversar</a>
+					</td>
 				</tr>
 				<% }) %>
 			</tbody>

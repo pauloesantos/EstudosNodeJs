@@ -1,8 +1,8 @@
 var express = require('express')
   , app = express()
   , load = require('express-load')
-  , error = require('./middleware/error')
   , server = require('http').createServer(app)
+  , error = require('./middleware/error')
   , io = require('socket.io').listen(server);
 
 
@@ -33,7 +33,7 @@ load('models')
 	.then('routes')
 	.into(app);
 
-io.socket.on('connection', function(client){
+io.sockets.on('connection', function(client){
 	client.on('send-server', function(data){
 		var msg = "<b>"+data.nome+":</b>"+data.msg+"<b>";
 		client.emit('send-client', msg);
