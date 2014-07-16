@@ -6,9 +6,8 @@
 		document.getElementById('chat').innerHTML += msg;
 	});
 	var enviar = function () {
-		var nome = document.getElementById('nome').value;
 		var msg = document.getElementById('msg').value;
-		socket.emit('send-server', {nome: nome, msg:});
+		socket.emit('send-server', msg.value);
 	};
 </script>
 <header>
@@ -16,7 +15,6 @@
 </header> 
 <section class="row-fluid">
 	<pre id="chat"></pre>
-	<input type="hidden" id="nome" value="<%- usuario.nome %>">
 	<input type="text" id="msg" placeholder="Mensagem">
 	<button onclick="enviar();">Enviar</button>
 </section>
