@@ -19,7 +19,7 @@
 					<td><%- contato.email %></td>
 					<td>
 						<a href="/contato/<%- index %>">Detalhes</a>
-						<a href="/chat/<%- contato.email %>">Conversar</a>
+						<a href="/chat/<%- contato.email %>" id="chat_<%- contato.email %>">Conversar</a>
 					</td>
 				</tr>
 				<% }) %>
@@ -27,5 +27,6 @@
 		</table>
 	</section>
 </section>
+	<% include notify_script%>
 	<% include ../exit %>
 	<% include ../footer %>
