@@ -3,10 +3,11 @@
 <script>
 	var socket = io.connect('http://localhost:3000');
 	socket.on('send-client', function (msg) {
-		document.getElementById('chat').innerHTML += msg;
+		document.getElementById('chat');
+		chat.innerHTML += msg;
 	});
 	var enviar = function () {
-		var msg = document.getElementById('msg').value;
+		var msg = document.getElementById('msg');
 		socket.emit('send-server', msg.value);
 	};
 </script>
@@ -16,7 +17,7 @@
 <section class="row-fluid">
 	<pre id="chat"></pre>
 	<input type="text" id="msg" placeholder="Mensagem">
-	<button onclick="enviar();">Enviar</button>
+	<input type="button" onclick="enviar();" value="Enviar">
 </section>
 <% include ../exit %>
 <% include ../footer %>
