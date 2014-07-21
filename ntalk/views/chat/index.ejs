@@ -1,17 +1,7 @@
 <% include ../header %>
 <script src="/socket.io/socket.io.js"></script>
 <script>
-	var socket = io.connect('http://localhost:3000');
-	socket.on('send-client', function (msg) {
-		document.getElementById('chat');
-		chat.innerHTML += msg;
-	});
-	var enviar = function () {
-		var msg = document.getElementById('msg');
-		socket.emit('send-server', msg.value);
-	};
-</script>
-<header>
+<header class="row-fluid text-center">
  	<h2>Ntalk - Chat</h2>
 </header> 
 <section class="row-fluid">

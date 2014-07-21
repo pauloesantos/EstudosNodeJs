@@ -3,7 +3,8 @@
 	<h2>Ntlak - Editar contato</h2>
 </header>
 <section class="row-fluid text-center">
-	<form action="/contato/<%- id %>" method="post" class="well form-inline">
+  <form action="/contato/<%- contato._id %>" method="post" class="well form-inline">
+    <h4>Editar contato</h4>
 		<input type="hidden" name="_method" value="put">
 		<label>Nome:</label>
 		<input type="text" name="contato[nome]" value="<%- contato.nome %>">

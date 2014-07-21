@@ -3,7 +3,10 @@ var express = require('express'),
     load = require('express-load'),
     server = require('http').createServer(app),
     error = require('./middleware/error'),
-    io = require('socket.io').listen(server);
+    io = require('socket.io').listen(server),
+    mongoose = require('mongoose');
+
+global.db = mongoose.connect('mongodb://localhost/ntalk');
 
 
 
@@ -18,7 +21,7 @@ app.use(express.bodyParser());
 app.use(app.router);
 
 const KEY = 'ntalk.sid',
-    SECRET = 'ntalk';
+SECRET = 'ntalk';
 var cookie = express.cookieParser(SECRET),
     store = new express.session.MemoryStore(),
     sessOpts = {
@@ -64,14 +67,6 @@ load('models')
 
 load('sockets')
     .into(io);
-
-/* io.sockets.on('connection', function(client) {
-    client.on('send-server', function(data) {
-        var msg = "<b>" + data.nome + ":</b>" + data.msg + "<b>";
-        client.emit('send-client', msg);
-        client.broadcast.emit('send-client', msg);
-    });
-}); */
 
 server.listen(3000, function() {
     console.log("Ntalk no ar!");
