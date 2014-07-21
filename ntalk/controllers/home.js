@@ -1,4 +1,5 @@
 module.exports = function(app) {
+  var Usuario = app.models.usuario;
     var HomeController = {
         index: function(req, res) {
             res.render('home/index');
@@ -18,7 +19,7 @@ module.exports = function(app) {
                             if (erro) {
                                 res.redirect('/');
                             } else {
-                                req.sessiom.usuario = usuario;
+              req.session.usuario = usuario;
                                 res.redirect('/contatos');
                             }
                         });

@@ -20,17 +20,17 @@
       </thead>
       <tbody>
         <% contatos.forEach(function(contato) { %>
-          <tr>
-            <td><%- contato.nome %></td>
-            <td><%- contato.email %></td>
-            <td>
-              <span id="notify_<%- contato.email %>" class="label">Offline</span>
-            </td>
-            <td>
+        <tr>
+          <td><%- contato.nome %></td>
+          <td><%- contato.email %></td>
+          <td>
+            <span id="notify_<%- contato.email %>" class="label">Offline</span>
+          </td>
+          <td>
               <a href="/contato/<%- contato._id %>" class="btn btn-info">Detalhes</a>
-              <a href="/chat/<%- contato.email %>" id="chat_<%- contato.email %>" class="btn btn-inverse">Conversar</a>
-            </td>
-          </tr>
+            <a href="/chat/<%- contato.email %>" id="chat_<%- contato.email %>" class="btn btn-inverse">Conversar</a>
+          </td>
+        </tr>
         <% }) %>
       </tbody>
     </table>

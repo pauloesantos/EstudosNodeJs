@@ -5,9 +5,13 @@
  	<h2>Ntalk - Chat</h2>
 </header> 
 <section class="row-fluid">
-	<pre id="chat"></pre>
+  <div class="well span6 offset3">
+    <pre id="chat" class="pre-scrollable" style="width:auto;height:250px;"></pre>
+    <div class="input-append">
 	<input type="text" id="msg" placeholder="Mensagem">
 	<input type="button" onclick="enviar();" value="Enviar">
+    </div>
+  </div>
 </section>
 <% include ../exit %>
 <% include ../footer %>

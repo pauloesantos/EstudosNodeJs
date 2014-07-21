@@ -21,7 +21,7 @@ app.use(express.bodyParser());
 app.use(app.router);
 
 const KEY = 'ntalk.sid',
-SECRET = 'ntalk';
+    SECRET = 'ntalk';
 var cookie = express.cookieParser(SECRET),
     store = new express.session.MemoryStore(),
     sessOpts = {
@@ -71,3 +71,5 @@ load('sockets')
 server.listen(3000, function() {
     console.log("Ntalk no ar!");
 });
+
+module.exports = app;
