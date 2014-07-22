@@ -6,22 +6,9 @@ var express = require('express'),
     io = require('socket.io').listen(server),
     mongoose = require('mongoose');
 
-global.db = mongoose.connect('mongodb://localhost/ntalk');
-
-
-
-// view engine setup
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
-
-app.use(express.cookieParser('ntalk'));
-app.use(express.session());
-app.use(express.bodyParser());
-
-app.use(app.router);
 
 const KEY = 'ntalk.sid',
-    SECRET = 'ntalk';
+    SECRET = 'Ntalk';
 var cookie = express.cookieParser(SECRET),
     store = new express.session.MemoryStore(),
     sessOpts = {
@@ -48,7 +35,7 @@ app.use(error.serverError);
 
 io.set('authorization', function(data, accept) {
     cookie(data, {}, function(err) {
-        var sessionID = data.signedCookie[KEY];
+        var sessionID = data.signedCookies[KEY];
         store.get(sessionID, function(err, session) {
             if (err || !session) {
                 accept(null, false);
