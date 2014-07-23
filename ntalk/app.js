@@ -4,13 +4,20 @@ var express = require('express'),
     server = require('http').createServer(app),
     error = require('./middleware/error'),
     io = require('socket.io').listen(server),
-    mongoose = require('mongoose');
+    redis = require('./middleware/redis_connect'),
+    ExpressStore = redis.getExpressStore(),
+    SocketStore = redis.getSocketStore();
+//mongoose = require('mongoose');
 
 
-const KEY = 'ntalk.sid',
-    SECRET = 'Ntalk';
+const SECRET = 'Ntalk',
+    KEY = 'ntalk.sid';
 var cookie = express.cookieParser(SECRET),
-    store = new express.session.MemoryStore(),
+    storeOpts = {
+        client: redis.getClient(),
+        prefix: KEY
+    },
+    store = new ExpressStore(storeOpts),
     sessOpts = {
         secret: SECRET,
         key: KEY,
@@ -33,6 +40,7 @@ app.use(error.serverError);
 
 // ... stack de configurações do servidor..
 
+io.set('store', new SocketStore);
 io.set('authorization', function(data, accept) {
     cookie(data, {}, function(err) {
         var sessionID = data.signedCookies[KEY];

@@ -15,8 +15,7 @@ module.exports = function(app) {
             var _id = req.session.usuario._id;
             Usuario.findById(_id, function(erro, usuario) {
                 var contato = req.body.contato;
-                var contatos = usuario.contatos;
-                contatos.push(contato);
+        usuario.contatos.push(contato);
                 usuario.save(function() {
                     res.redirect('/contatos');
                 });
